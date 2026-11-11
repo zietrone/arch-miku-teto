@@ -1,0 +1,28 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "file-raw",
+    "source": "~/.config/fastfetch/teto.txt",
+    "padding": { "top": 0, "left": 1, "right": 3 }
+  },
+  "display": {
+    "separator": "  ",
+    "color": { "keys": "38;2;224;64;91", "title": "38;2;242;178;92" },
+    "key": { "width": 10 }
+  },
+  "modules": [
+    "break", "break", "break",
+    { "type": "custom", "format": "\u001b[38;2;242;178;92m♪ \u001b[38;2;224;64;91mteto\u001b[38;2;255;143;163m@\u001b[38;2;224;64;91m0401 \u001b[38;2;242;178;92m♪" },
+    { "type": "custom", "format": "\u001b[38;2;102;64;74m──────────────────" },
+    { "type": "os",       "key": " os" },
+    { "type": "kernel",   "key": " kernel" },
+    { "type": "wm",       "key": " wm" },
+    { "type": "packages", "key": "󰏖 pkgs" },
+    { "type": "shell",    "key": " shell" },
+    { "type": "terminal", "key": " term" },
+    { "type": "uptime",   "key": "󰅐 uptime" },
+    { "type": "memory",   "key": "󰍛 mem" },
+    "break",
+    { "type": "colors", "symbol": "circle" }
+  ]
+}

@@ -1,0 +1,97 @@
+#!/usr/bin/env bash
+# desktop-mode: switch niri + Hyprland between the Miku and Kasane Teto themes.
+#
+#   desktop-mode miku|teto|toggle|status [--login]
+#
+# The login screen calls this with --login (via /usr/local/bin/desktop-mode-session)
+# before the compositor starts. Run it without --login inside a session to switch live.
+set -euo pipefail
+
+CFG=${XDG_CONFIG_HOME:-$HOME/.config}
+STATE=$CFG/desktop-mode
+current=$(cat "$STATE" 2>/dev/null || echo miku)
+
+mode=${1:-status}
+case $mode in
+    status) echo "$current"; exit 0 ;;
+    toggle) [[ $current == teto ]] && mode=miku || mode=teto ;;
+    miku|teto) ;;
+    *) echo "usage: desktop-mode miku|teto|toggle|status [--login]" >&2; exit 2 ;;
+esac
+login=false
+[[ ${2:-} == --login ]] && login=true
+
+# miku value : teto value (hex colours DMS writes, plus the cursor theme name)
+pairs=(
+    39c5bb:e0405b   # primary
+    137a7f:8f1d33   # primary container
+    3d6066:66404a   # outline
+    ff5c8a:ff7a59   # error / urgent
+    e12885:f2b25c   # secondary
+    miku-cursor-linux:teto-cursor-linux
+)
+sed_expr=()
+for p in "${pairs[@]}"; do
+    m=${p%%:*} t=${p##*:}
+    if [[ $mode == teto ]]; then sed_expr+=(-e "s/$m/$t/gI"); else sed_expr+=(-e "s/$t/$m/gI"); fi
+done
+swap() { for f; do [[ -f $f ]] && sed -i "${sed_expr[@]}" "$f"; done; return 0; }
+
+cursor=$mode-cursor-linux
+wall=$HOME/Pictures/Wallpapers/$mode-01.png
+theme=$CFG/DankMaterialShell/themes/$mode/theme.json
+
+# Live switch: stop DMS first so it doesn't write its old state back over ours.
+dms_was_running=false
+if ! $login && pgrep -x dms >/dev/null; then
+    dms_was_running=true
+    if systemctl --user -q is-active dms; then systemctl --user stop dms; else dms kill >/dev/null 2>&1 || true; fi
+    sleep 0.5
+fi
+
+# DMS: custom theme, cursor and wallpaper
+python3 -I - "$CFG/DankMaterialShell/settings.json" "$HOME/.local/state/DankMaterialShell/session.json" \
+    "$theme" "$cursor" "$wall" <<'PY'
+import json, sys
+settings, session, theme, cursor, wall = sys.argv[1:]
+def edit(path, fn):
+    try:
+        with open(path) as f: data = json.load(f)
+    except FileNotFoundError:
+        return
+    fn(data)
+    with open(path, "w") as f: json.dump(data, f, indent=2)
+def s(d):
+    d["currentThemeName"] = d["currentThemeCategory"] = "custom"
+    d["customThemeFile"] = theme
+    d.setdefault("cursorSettings", {})["theme"] = cursor
+edit(settings, s)
+edit(session, lambda d: d.__setitem__("wallpaperPath", wall))
+PY
+
+# Compositor colours/cursor (DMS regenerates these too; this makes the first frame right)
+swap "$CFG/niri/config.kdl" "$CFG/niri/dms/colors.kdl" "$CFG/niri/dms/cursor.kdl" \
+     "$CFG/hypr/dms/colors.lua" "$CFG/hypr/dms/cursor.lua" \
+     "$HOME/.local/share/icons/default/index.theme"
+ln -sfn "$mode.lua" "$CFG/hypr/theme/current.lua"
+ln -sfn "$mode-theme.conf" "$CFG/kitty/mode-theme.conf"
+ln -sfn "config-$mode.jsonc" "$CFG/fastfetch/config.jsonc"
+# (the bash prompt's pixel Miku/Teto and colours follow $STATE by themselves, even in open shells)
+command -v gsettings >/dev/null && gsettings set org.gnome.desktop.interface cursor-theme "$cursor" 2>/dev/null || true
+
+echo "$mode" > "$STATE"
+# the login screen can't read ~/.config, so it reads this copy (created by teto-setup.sh)
+[[ -w /var/lib/desktop-mode/$USER ]] && echo "$mode" > "/var/lib/desktop-mode/$USER"
+
+if ! $login; then
+    [[ -n ${HYPRLAND_INSTANCE_SIGNATURE:-} ]] && { hyprctl reload >/dev/null; hyprctl setcursor "$cursor" 24 >/dev/null; }
+    pkill -USR1 -x kitty 2>/dev/null || true       # kitty re-reads its config
+    if $dms_was_running; then
+        if systemctl --user -q is-enabled dms 2>/dev/null && systemctl --user -q is-active graphical-session.target; then
+            systemctl --user start dms
+        else
+            setsid -f dms run >/dev/null 2>&1
+        fi
+    fi
+    echo "Switched to $mode mode."
+fi

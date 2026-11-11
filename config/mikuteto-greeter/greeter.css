@@ -1,0 +1,75 @@
+/* mikuteto-greeter · @tokens@ are filled per mode by greeter.py */
+@import url("resource:///org/gtk/libgtk/theme/Adwaita/gtk-contained-dark.css");
+
+* { font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace; font-size: 11pt; }
+
+#greeter {
+  background-color: #000;
+  background-image: url("@wallpaper@");
+  background-size: cover;
+  background-position: center;
+  color: @text@;
+}
+
+#topbar {
+  background: alpha(@panel@, 0.6);
+  border-bottom: 2px solid @accent@;
+  padding: 4px 12px;
+}
+#topbar label { color: @text@; }
+#clock { font-weight: bold; }
+#power { color: @text@; font-size: 14pt; border-radius: 8px; }
+#power:hover { background: alpha(@accent@, 0.25); }
+
+#card {
+  background: @panel@;
+  border: 2px solid @accent@;
+  border-radius: 18px;
+  box-shadow: 0 0 24px alpha(@accent@, 0.45);
+  padding: 22px 24px;
+}
+#title { color: @dim@; font-size: 13pt; letter-spacing: 2px; }
+#user  { color: @text@; font-size: 14pt; font-weight: bold; }
+#hint  { color: alpha(@text@, 0.45); font-size: 9pt; }
+#message { color: @accent2@; }
+
+/* Miku | Teto mode switch */
+#modes button {
+  background: @field@;
+  color: @dim@;
+  border: 1px solid @outline@;
+  padding: 6px 0;
+  font-weight: bold;
+  box-shadow: none;
+}
+#modes button:first-child { border-radius: 10px 0 0 10px; }
+#modes button:last-child  { border-radius: 0 10px 10px 0; }
+#modes button:checked {
+  background: linear-gradient(90deg, @accent@, @accent2@);
+  color: @on_accent@;
+  border-color: @accent@;
+}
+
+entry, combobox button {
+  background: @field@;
+  color: @text@;
+  border: 1px solid @outline@;
+  border-radius: 10px;
+  caret-color: @accent@;
+  min-height: 32px;
+  box-shadow: none;
+}
+entry:focus { border-color: @accent@; box-shadow: 0 0 0 2px alpha(@accent@, 0.35); }
+
+#login {
+  background: linear-gradient(90deg, @accent@, @accent2@);
+  color: @on_accent@;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  min-height: 34px;
+}
+#login:disabled { opacity: 0.6; }
+
+menu, .menu { background: @panel@; color: @text@; border: 1px solid @accent@; border-radius: 10px; }
+menuitem:hover { background: alpha(@accent@, 0.3); }

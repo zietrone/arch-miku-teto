@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3840" height="2160" viewBox="0 0 3840 2160">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="35%" r="90%">
+      <stop offset="0" stop-color="#16373b"/><stop offset=".5" stop-color="#0e2125"/><stop offset="1" stop-color="#081012"/>
+    </radialGradient>
+    <linearGradient id="tail" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#86cecb"/><stop offset=".55" stop-color="#39c5bb"/><stop offset="1" stop-color="#137a7f" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" filterUnits="userSpaceOnUse" x="0" y="0" width="3840" height="2160"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+  <rect width="3840" height="2160" fill="url(#bg)"/>
+  <!-- staff lines -->
+  <g stroke="#39c5bb" stroke-opacity=".10" stroke-width="3" fill="none">
+    <path d="M0 1500 C 900 1380, 1900 1700, 3840 1420"/><path d="M0 1540 C 900 1420, 1900 1740, 3840 1460"/>
+    <path d="M0 1580 C 900 1460, 1900 1780, 3840 1500"/><path d="M0 1620 C 900 1500, 1900 1820, 3840 1540"/>
+    <path d="M0 1660 C 900 1540, 1900 1860, 3840 1580"/>
+  </g>
+  <!-- twin tails -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M2380 180 C 2050 700, 2700 1100, 2250 1700 S 2350 2100, 2500 2300" stroke="url(#tail)" stroke-width="200" opacity=".35" filter="url(#glow)"/>
+    <path d="M2380 180 C 2050 700, 2700 1100, 2250 1700 S 2350 2100, 2500 2300" stroke="url(#tail)" stroke-width="90" opacity=".85"/>
+    <path d="M2860 180 C 3250 700, 2650 1100, 3150 1700 S 3050 2100, 2950 2300" stroke="url(#tail)" stroke-width="200" opacity=".35" filter="url(#glow)"/>
+    <path d="M2860 180 C 3250 700, 2650 1100, 3150 1700 S 3050 2100, 2950 2300" stroke="url(#tail)" stroke-width="90" opacity=".85"/>
+  </g>
+  <!-- hair ties -->
+  <g fill="#e12885"><rect x="2310" y="130" width="140" height="70" rx="18"/><rect x="2790" y="130" width="140" height="70" rx="18"/></g>
+  <g fill="#e12885" opacity=".5" filter="url(#glow)"><rect x="2310" y="130" width="140" height="70" rx="18"/><rect x="2790" y="130" width="140" height="70" rx="18"/></g>
+  <!-- notes -->
+  <g fill="#86cecb" fill-opacity=".55">
+    <g transform="translate(700 1420) rotate(-12)"><ellipse rx="34" ry="24"/><rect x="26" y="-170" width="10" height="170"/></g>
+    <g transform="translate(1250 1520) rotate(-12)"><ellipse rx="34" ry="24"/><rect x="26" y="-170" width="10" height="170"/><path d="M36 -170 q 70 40 40 120 q 10 -60 -40 -80z"/></g>
+    <g transform="translate(1700 1600) rotate(-12)"><ellipse rx="34" ry="24"/><rect x="26" y="-170" width="10" height="170"/></g>
+    <g transform="translate(1860 1560) rotate(-12)"><ellipse rx="34" ry="24"/><rect x="26" y="-210" width="10" height="210"/><rect x="-130" y="-210" width="166" height="22"/></g>
+  </g>
+  <!-- 01 -->
+  <text x="300" y="900" font-family="JetBrains Mono, DejaVu Sans Mono, monospace" font-weight="700" font-size="520" fill="#e12885" fill-opacity=".9">01</text>
+  <text x="310" y="1010" font-family="DejaVu Sans, sans-serif" font-size="70" letter-spacing="38" fill="#86cecb" fill-opacity=".8">HATSUNE MIKU</text>
+  <!-- piano keys -->
+  <g transform="translate(310 1060)">
+    <rect width="980" height="14" fill="#39c5bb" opacity=".8"/>
+  </g>
+  <g fill="#e0f4f2" fill-opacity=".5" filter="url(#soft)">
+    <circle cx="900" cy="300" r="5"/><circle cx="1500" cy="220" r="4"/><circle cx="3500" cy="900" r="6"/><circle cx="1950" cy="420" r="4"/><circle cx="3600" cy="300" r="5"/><circle cx="500" cy="1900" r="5"/>
+  </g>
+</svg>

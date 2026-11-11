@@ -1,0 +1,180 @@
+{
+  "currentThemeName": "custom",
+  "currentThemeCategory": "custom",
+  "customThemeFile": "__HOME__/.config/DankMaterialShell/themes/miku/theme.json",
+  "clockFormat": "24h",
+  "barElevationEnabled": false,
+  "appIdSubstitutions": [],
+  "networkPreference": "wifi",
+  "cursorSettings": {
+    "theme": "miku-cursor-linux",
+    "size": 24,
+    "niri": {
+      "hideWhenTyping": false,
+      "hideAfterInactiveMs": 0
+    },
+    "hyprland": {
+      "hideOnKeyPress": false,
+      "hideOnTouch": false,
+      "inactiveTimeout": 0
+    },
+    "dwl": {
+      "cursorHideTimeout": 0
+    }
+  },
+  "osdPowerProfileEnabled": true,
+  "barConfigs": [
+    {
+      "id": "default",
+      "name": "Main Bar",
+      "enabled": true,
+      "position": 0,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": true,
+      "leftWidgets": [
+        "launcherButton",
+        "workspaceSwitcher",
+        "focusedWindow"
+      ],
+      "centerWidgets": [
+        "music",
+        "clock",
+        "weather"
+      ],
+      "rightWidgets": [
+        "systemTray",
+        "clipboard",
+        "cpuUsage",
+        "memUsage",
+        "notificationButton",
+        "battery",
+        {
+          "id": "controlCenterButton",
+          "enabled": true,
+          "showMicPercent": true
+        }
+      ],
+      "spacing": 6,
+      "innerPadding": 4,
+      "bottomGap": 0,
+      "transparency": 0.85,
+      "widgetTransparency": 1,
+      "squareCorners": false,
+      "noBackground": false,
+      "maximizeWidgetIcons": false,
+      "maximizeWidgetText": false,
+      "widgetPadding": 8,
+      "gothCornersEnabled": false,
+      "gothCornerRadiusOverride": false,
+      "gothCornerRadiusValue": 12,
+      "borderEnabled": false,
+      "borderColor": "surfaceText",
+      "borderOpacity": 1,
+      "borderThickness": 1,
+      "widgetOutlineEnabled": true,
+      "widgetOutlineColor": "primary",
+      "widgetOutlineOpacity": 0.35,
+      "widgetOutlineThickness": 1,
+      "fontScale": 1,
+      "iconScale": 1,
+      "autoHide": true,
+      "autoHideDelay": 250,
+      "showOnWindowsOpen": false,
+      "openOnOverview": false,
+      "visible": true,
+      "popupGapsAuto": true,
+      "popupGapsManual": 4,
+      "maximizeDetection": true,
+      "scrollEnabled": true,
+      "scrollXBehavior": "focusWindow",
+      "scrollYBehavior": "workspace",
+      "shadowIntensity": 0,
+      "shadowOpacity": 60,
+      "shadowColorMode": "text",
+      "shadowCustomColor": "#000000",
+      "clickThrough": false,
+      "island": false,
+      "followInterfaceStyle": false,
+      "widgetFollowInterfaceStyle": true
+    }
+  ],
+  "configVersion": 42,
+  "radiusStrength": 38,
+  "dockConfigs": [
+    {
+      "id": "dock",
+      "name": "Dock",
+      "enabled": false,
+      "screenPreferences": [
+        "all"
+      ],
+      "showOnLastDisplay": true,
+      "position": 1,
+      "mode": "compact",
+      "taskbarAlign": "center",
+      "widgetExpansion": "popout",
+      "iconSize": 40,
+      "spacing": 4,
+      "itemSpacing": 4,
+      "margin": 0,
+      "bottomGap": 0,
+      "transparency": 1,
+      "followInterfaceStyle": true,
+      "autoHide": false,
+      "smartAutoHide": false,
+      "useOverlayLayer": false,
+      "editOnRightClick": false,
+      "showOnFullscreen": false,
+      "openOnOverview": false,
+      "groupByApp": false,
+      "separatePinnedAndRunningApps": false,
+      "restoreSpecialWorkspaceOnClick": false,
+      "isolateDisplays": false,
+      "indicatorStyle": "circle",
+      "borderEnabled": false,
+      "borderColor": "surfaceText",
+      "borderOpacity": 1,
+      "borderThickness": 1,
+      "launcherEnabled": false,
+      "launcherLogoMode": "apps",
+      "launcherLogoCustomPath": "",
+      "launcherLogoColorOverride": "",
+      "launcherLogoSizeOffset": 0,
+      "launcherLogoBrightness": 0.5,
+      "launcherLogoContrast": 1,
+      "maxVisibleApps": 0,
+      "maxVisibleRunningApps": 0,
+      "showOverflowBadge": true,
+      "showTrash": false,
+      "trashFileManager": "default",
+      "trashCustomCommand": "",
+      "magnification": false,
+      "magnificationScale": 130,
+      "magnificationProfile": "parabolic",
+      "magnificationExpand": false,
+      "order": [],
+      "widgets": [
+        {
+          "id": "dock_launcher",
+          "widgetId": "dockLauncher",
+          "enabled": true
+        },
+        {
+          "id": "dock_apps",
+          "widgetId": "appsDock",
+          "enabled": true
+        },
+        {
+          "id": "dock_trash",
+          "widgetId": "dockTrash",
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "dmsWindowsFloatingSeeded": [
+    "hyprland"
+  ]
+}

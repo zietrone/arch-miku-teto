@@ -1,0 +1,28 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "file-raw",
+    "source": "~/.config/fastfetch/miku.txt",
+    "padding": { "top": 0, "left": 1, "right": 3 }
+  },
+  "display": {
+    "separator": "  ",
+    "color": { "keys": "38;2;57;197;187", "title": "38;2;225;40;133" },
+    "key": { "width": 10 }
+  },
+  "modules": [
+    "break", "break", "break",
+    { "type": "custom", "format": "\u001b[38;2;225;40;133m♪ \u001b[38;2;57;197;187mmiku\u001b[38;2;134;206;203m@\u001b[38;2;57;197;187m01 \u001b[38;2;225;40;133m♪" },
+    { "type": "custom", "format": "\u001b[38;2;61;96;102m──────────────────" },
+    { "type": "os",       "key": " os" },
+    { "type": "kernel",   "key": " kernel" },
+    { "type": "wm",       "key": " wm" },
+    { "type": "packages", "key": "󰏖 pkgs" },
+    { "type": "shell",    "key": " shell" },
+    { "type": "terminal", "key": " term" },
+    { "type": "uptime",   "key": "󰅐 uptime" },
+    { "type": "memory",   "key": "󰍛 mem" },
+    "break",
+    { "type": "colors", "symbol": "circle" }
+  ]
+}
