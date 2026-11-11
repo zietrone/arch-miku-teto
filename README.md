@@ -2,6 +2,10 @@
 
 Meine Arch-Linux-Dotfiles mit zwei Themes, zwischen denen man jederzeit wechseln kann:
 
+[![Vorschau: Miku- und Teto-Modus](showcase/preview.gif)](showcase/preview.mp4)
+
+▶ **[Ganzes Vorschauvideo ansehen (1 min, MP4)](showcase/preview.mp4)**
+
 | Modus | Farben | Extras |
 |-------|--------|--------|
 | **Miku** | Türkis `#39c5bb` + Pink `#e12885` | Miku-Cursor, Pixel-Miku mit Lauch im Prompt |
@@ -43,6 +47,7 @@ config/            -> ~/.config/...
 local/bin/         desktop-mode (Theme-Umschalter), mini-miku-png (Prompt-Sprite)
 local/share/icons/ Miku- und Teto-Cursor
 wallpapers/        miku-01 / teto-01 (PNG + SVG)
+showcase/          Vorschauvideo + record-showcase.sh (nimmt es automatisch neu auf)
 bashrc             Miku/Teto-Prompt
 install.sh
 ```
