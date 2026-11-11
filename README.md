@@ -2,9 +2,9 @@
 
 Meine Arch-Linux-Dotfiles mit zwei Themes, zwischen denen man jederzeit wechseln kann:
 
-[![Vorschau: Miku- und Teto-Modus](showcase/preview.gif)](showcase/preview.mp4)
+https://github.com/user-attachments/assets/33391767-72a9-485b-a5dc-a8f7987ead11
 
-▶ **[Ganzes Vorschauvideo ansehen (1 min, MP4)](showcase/preview.mp4)**
+<sub>Video nicht sichtbar? → [showcase/preview.mp4](showcase/preview.mp4)</sub>
 
 | Modus | Farben | Extras |
 |-------|--------|--------|
